@@ -1,0 +1,12 @@
+{
+  "name": "clarifainodedemo",
+  "version": "0.0.1",
+  "description": "A simple demo to showcase Clarifai's image recognition capabilities in Node.",
+  "main": "app.js",
+  "author": "Patrick Catanzariti",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "body-parser": "^1.14.2"
+  }
+}
