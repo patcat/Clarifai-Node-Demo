@@ -5,16 +5,17 @@ dropArea.addEventListener("drop", imageDropped, false);
 
 function imageDropped(evt) {
   evt.stopPropagation();
-  evt.preventDefault(); 
+  evt.preventDefault();
 
-  var imageHTML = evt.dataTransfer.getData("text/html"),
-      dataParent = $("<div>").append(imageHTML),
-      imageRequested = $(dataParent).find("img").attr("src"),
+  var imageRequested,
       $imageFound = $("#imageFound");
-  
-  console.log(imageRequested);
 
-  $imageFound.attr("src", imageRequested);
+  $(evt.dataTransfer.files).each(function(){
+      var reader = new FileReader();
+      reader.readAsDataURL(this);
+      reader.onload = function(readEvent) {
+          imageRequested = readEvent.target.result;
+          $("#imageFound").attr("src", imageRequested);
 
   $.ajax({
     type: "POST",
